@@ -1,8 +1,12 @@
 <body>
     <?php
+        session_start();
         $title = "Halaman Utama - PetsQu Shop"; 
         $home = "active nav-active";
         include "template/navbar.php";
+        include "../PetsQu/config/config.php";
+        include "../PetsQu/config/connection.php";
+        $query_product = mysqli_query($conn, "SELECT * from produk order by id_produk DESC");
     ?>
     <div class="container">
         <div class="row">
@@ -39,58 +43,28 @@
             </div>
         </div>
         <div class="row g-4 mb-4">
+            <?php 
+                while($var = mysqli_fetch_array($query_product)){
+                ?>
             <div class="col-lg-3 col-md-4 col-6">
                 <div class="card h-100">
-                    <img src="..." class="card-img-top" style="height:150px;" alt=" ...">
+                    <img src="<?= $base_url."image/product/".$var['gambar_produk']; ?>" class="card-img-top"
+                        style="height:150px;" alt=" ...">
                     <div class="card-body">
-                        <h5 class="card-title">Product Name</h5>
+                        <h5 class="card-title"><?= $var['nama_produk']; ?></h5>
                     </div>
                     <div class="card-footer">
-                        <small class="text-muted"> <b>Rp. 999.999.999 </b></small>
+                        <small class="text-muted"> <b>Rp. <?= $var['harga_produk']; ?> </b></small>
                         <button type="button" class="btn btn-success w-100 mt-1">+ Keranjang</button>
-                        <button type="button" class="btn btn-primary w-100 mt-1">Detail Produk</button>
+                        <a href="<?= $base_url.'product/detail.php?id='.$var['id_produk']; ?>">
+                            <button type="button" class="btn btn-primary w-100 mt-1">Detail Produk</button>
+                        </a>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-4 col-6">
-                <div class="card h-100">
-                    <img src="..." class="card-img-top" style="height:150px;" alt=" ...">
-                    <div class="card-body">
-                        <h5 class="card-title">Product Name</h5>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted"> <b>Rp. 999.999.999 </b></small>
-                        <button type="button" class="btn btn-success w-100 mt-1">+ Keranjang</button>
-                        <button type="button" class="btn btn-primary w-100 mt-1">Detail Produk</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-6">
-                <div class="card h-100">
-                    <img src="..." class="card-img-top" style="height:150px;" alt=" ...">
-                    <div class="card-body">
-                        <h5 class="card-title">Product Name</h5>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted"> <b>Rp. 999.999.999 </b></small>
-                        <button type="button" class="btn btn-success w-100 mt-1">+ Keranjang</button>
-                        <button type="button" class="btn btn-primary w-100 mt-1">Detail Produk</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-6">
-                <div class="card h-100">
-                    <img src="..." class="card-img-top" style="height:150px;" alt=" ...">
-                    <div class="card-body">
-                        <h5 class="card-title">Product Name</h5>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted"> <b>Rp. 999.999.999 </b></small>
-                        <button type="button" class="btn btn-success w-100 mt-1">+ Keranjang</button>
-                        <button type="button" class="btn btn-primary w-100 mt-1">Detail Produk</button>
-                    </div>
-                </div>
-            </div>
+            <?php 
+                }
+                ?>
         </div>
     </div>
 </body>
