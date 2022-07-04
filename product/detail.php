@@ -2,6 +2,7 @@
 session_start();
 include "../config/config.php";
 include "../config/connection.php";
+include "../template/resjs.php";
 if($_GET['id'] == NULL){
     header("Location:".$base_url);
 }
@@ -28,10 +29,9 @@ include "../template/navbar.php";
                     </div>
                     <div class="col-lg-6 col-md-6 col-12">
                         <div class="col">
-                            <button class="btn btn-success w-100">+ Keranjang</button>
-                        </div>
-                        <div class="col">
-                            <button class="btn btn-primary w-100">Beli langsung</button>
+                            <a
+                                href="<?= $base_url.'page/user/process/keranjang.php?action=add&id='.$var['id_produk']; ?>"><button
+                                    type="button" class="btn btn-success w-100 mt-1">+ Keranjang</button></a>
                         </div>
                     </div>
                 </div>

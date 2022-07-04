@@ -55,7 +55,8 @@
                     </div>
                     <div class="card-footer">
                         <small class="text-muted"> <b>Rp. <?= $var['harga_produk']; ?> </b></small>
-                        <button type="button" class="btn btn-success w-100 mt-1">+ Keranjang</button>
+                        <a href="<?= $base_url.'page/user/process/keranjang.php?action=add&id='.$var['id_produk']; ?>"><button
+                                type="button" class="btn btn-success w-100 mt-1">+ Keranjang</button></a>
                         <a href="<?= $base_url.'product/detail.php?id='.$var['id_produk']; ?>">
                             <button type="button" class="btn btn-primary w-100 mt-1">Detail Produk</button>
                         </a>

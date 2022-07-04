@@ -1,5 +1,8 @@
 <head>
-    <?php include "rescss.php"; ?>
+    <?php 
+    $base_url = 'http://localhost/PetsQu/';
+    include "rescss.php"; 
+    ?>
 </head>
 <nav class="navbar navbar-expand-lg navbar-light bg-01">
     <div class="container-fluid">
@@ -13,33 +16,33 @@
                 <li class="nav-item">
                     <a class="nav-link <?= $home; ?>" href="<?= $base_url; ?>">Halaman Utama</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link <?= $produk; ?>" href="#">Produk</a>
-                </li>
                 <?php 
                 if($_SESSION == NULL){
                 ?>
                 <li class="nav-item">
-                    <a class="nav-link <?= $login; ?>" href="../../PetsQu/page/user/login.php">Masuk</a>
+                    <a class="nav-link <?= $login; ?>" href="<?= $base_url; ?>page/user/login.php">Masuk</a>
                 </li>
                 <?php 
                 }else{
                     if($_SESSION['status'] == 'admin'){
                     ?>
                 <li class="nav-item">
-                    <a class="nav-link <?= $admin; ?>" href="#">Halaman admin</a>
+                    <a class="nav-link <?= $admin; ?>" href="<?= $base_url; ?>page/admin/index.php">Halaman admin</a>
                 </li>
                 <?php
                     }else{
                      ?>
                 <li class="nav-item">
-                    <a class="nav-link <?= $profile; ?>" href="../../PetsQu/page/user/profile.php">Profile</a>
+                    <a class="nav-link <?= $keranjang; ?>" href="<?= $base_url; ?>page/user/keranjang.php">Keranjang</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link <?= $pembelian; ?>" href="<?= $base_url; ?>page/user/pembelian.php">Pembelian</a>
                 </li>
                 <?php   
                     }
                     ?>
                 <li class="nav-item">
-                    <a class="nav-link <?= $logout; ?>" href="../../PetsQu/page/user/process/logout.php">Keluar
+                    <a class="nav-link <?= $logout; ?>" href="<?= $base_url; ?>page/user/process/logout.php">Keluar
                         (<?= $_SESSION['nama']; ?>)</a>
                 </li>
                 <?php

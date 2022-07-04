@@ -7,7 +7,7 @@ if($_POST){
         // Check username
         $check_username = mysqli_query($conn, "SELECT * FROM akun WHERE username = '".$_POST['username']."'");
         if($check_username->num_rows != NULL){
-            echo '<script>alert("Akun dengan username '.$_POST['username'].' sudah terdaftar!"); window.location.replace("'.$base_url.'page/user/register.php");</script>';
+            echo '<script>alert("Akun dengan username '.$_POST['username'].' sudah terdaftar!"); window.location.replace("'.$base_url.'page/user/login.php");</script>';
         }else{
             $sql = "INSERT into akun (username, password, nama, alamat, nope, status) values ('".$_POST['username']."', '".$_POST['password']."', '".$_POST['nama']."', '".$_POST['alamat']."', '".$_POST['nope']."', 'user')";
             if(mysqli_query($conn, $sql)) {
